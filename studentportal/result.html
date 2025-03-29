@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="icon" type="image/png" href="favicon">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+        }
+        header {
+            background-color: #001f7f;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: yellow;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+    color: yellow;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+        nav ul li a:hover {
+            color: yellow;
+            background-color: #003366;
+            border-radius: 5px;
+        }
+        .container {
+            display: flex;
+        }
+        
+        .profile-menu {
+            width: 25%;
+            background-color: hsl(0, 0%, 100%);
+            padding: 20px;
+        }
+        .profile-menu h2 {
+            color: #f2b705;
+        }
+        .profile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .profile-menu ul li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            width: 100%;
+        }
+        .profile-menu ul li {
+    padding: 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent; /* Default transparent border */
+}
+
+.profile-menu ul li:hover {
+    background-color: #d9d9d9;
+    border: 2px solid #333334; /* Blue border on hover */
+    border-radius: 5px; /* Optional: rounded corners */
+    padding: 8px; /* Ensures consistent padding */
+}
+        main {
+            flex: 1;
+            padding: 20px;
+            background: hsl(0, 0%, 84%);
+         
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .student-info {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        .student-details {
+            text-align: left;
+            color: #004080;
+            font-family: Tahoma, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .student-details strong {
+            font-weight: normal;
+        }
+        .student-details span {
+            font-weight: bold;
+            color: #004080;
+        }
+        .student-info img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+        }
+        .student-photo {
+            width: 150px;
+            height: 180px;
+            border: 2px solid black;
+            display: block;
+            position: absolute;
+            top: 20px;
+            right: 50px;
+        }
+        h3 {
+            color: #004080;
+            text-decoration: underline;
+            font-family: Verdana, sans-serif;
+            font-size: 14px;
+        }
+         /* table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid white;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: #4a70c1;
+            font-family: Tahoma, sans-serif;
+            font-size: 14px;
+        }
+        th {
+            background-color: #949191;
+            padding: 20px;
+        } */
+        /* tr:nth-child(3) {
+    background-color: #b4b4b4; Light grey
+}
+tr:nth-child(5) {
+    background-color: #b4b4b4; /* Light grey */
+}
+/* tr:nth-child(7) { */
+    background-color: #b4b4b4; /* Light grey */
+} */ */
+
+table {
+    width: 100%; /* Make table full width */
+    border-collapse: collapse; /* Remove space between borders */
+    
+}
+
+th, td {
+    padding: 10px; /* Add space inside each cell */
+    text-align: left; /* Align text properly */
+    color: #004080
+}
+
+th {
+    background-color: #999999; /* Make header darker */
+    color:  #004080; /* White text for contrast */
+    padding: 20px;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Alternate row color */
+}
+table, th, td {
+            border: 0.5px solid white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="delayHomeRedirect(event)">Home</a></li>
+                <li><a href="#">Students</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div class="user-info">Welcome, <span>Jayeoba Opeyemi Pelumi</span> | <a href="#" style="color: #f2b705;">Sign Out</a></div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="profile-menu">
+            <h2>Profile Menu</h2>
+            <ul>
+                <li>Profile Page</li>
+                <li>Health Centre Registration</li>
+                <li>Teaching Assessment</li>
+                <li>Payment Activities</li>
+                <li class="disabled">Complete Certificate Form</li>
+                <li class="disabled">Online Screening</li>
+                <li>Check Admission Status</li>
+                <li>Activate Late Reg. Payment</li>
+                <li>Update Biodata Information</li>
+                <li>Register Courses</li>
+                <li class="disabled">Complete Health Centre Form</li>
+                <li><a href="#" onclick="delayRedirect(event)">View Semester score</a></li>
+                <li><a href="result.html">Check Results</a></li>
+                <li class="disabled">Check Messages</li>
+                <li>Bedspace Request</li>
+                <li>Reports</li>
+            </ul>
+        </aside>
+
+        <main>
+            <h2>View Raw Score</h2>
+            <p class="warning">Always Calculate your GPA and CGPA every Semester with the results below to know your current status. If your CGPA is less than 1.0, ensure you see your Part Adviser to clarify your results before making payment and registration for subsequent semesters.</p>
+            <div class="student-info">
+                <div class="student-details">
+                    <p><strong>Registration Number:</strong> <span>ZOO/2022/042</span></p>
+                    <p><strong>Name:</strong> <span>Jayeoba Opeyemi Pelumi</span></p>
+                    <p><strong>Session/Semester:</strong> <span>HARMATTAN SEMESTER 2023/2024 SESSION</span></p>
+                    <p><strong>Current Part:</strong> <span>1</span></p>
+                    <p><strong>Faculty:</strong> <span>Science</span></p>
+                    <p><strong>Department:</strong> <span>Zoology</span></p>
+                </div>
+                <img src="image.png/passport.jpg" alt="Student Photo">
+            </div>
+            <h3>
+                <a href="#" onclick="delayCourseRedirect(event)" style="font-weight: bold; color: #004080; text-decoration: underline;">
+                    List of registered courses
+                </a>
+            </h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Course Unit</th>
+                        <th>CA Score</th>
+                        <th>Exam Score</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>BOT102</td>
+                    <td>Introductory Botany II</td>
+                    <td>3</td>
+                    <td>16</td>
+                    <td>35</td>
+                    <td>51</td>
+                </tr>
+                <tr>
+                    <td>CHM102</td>
+                    <td>Introductory Chemistry II</td>
+                    <td>4</td>
+                    <td></td>
+                    <td>61</td>
+                    <td>61</td>
+                </tr>
+                <tr>
+                    <td>CHM104</td>
+                    <td>Introductory Experimental Chemistry II</td>
+                    <td>1</td>
+                    <td>15</td>
+                    <td>41</td>
+                    <td>56</td>
+                </tr>
+                
+                <tr>
+                    <td>PHY106</td>
+                    <td>Physics for Biological Sciences II</td>
+                    <td>4</td>
+                    <td></td>
+                    <td>45</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td>PHY108</td>
+                    <td>Experimental Physics IB</td>
+                    <td>1</td>
+                    <td>9</td>
+                    <td>43</td>
+                    <td>52</td>
+                </tr>
+                <tr>
+                    <td>SER001</td>
+                    <td>Use of English</td>
+                    <td>4</td>
+                    <td></td>
+                    <td>57</td>
+                    <td>57</td>
+                </tr>
+                <tr>
+                    <td>SSC102</td>
+                    <td>Elements of Economic Theory and Principles</td>
+                    <td>3</td>
+                    <td></td>
+                    <td>63</td>
+                    <td>63</td>
+                </tr>
+                <tr>
+                    <td>ZOO102</td>
+                    <td>Introductory Zoology II</td>
+                    <td>3</td>
+                    <td></td>
+                    <td>60</td>
+                    <td>60</td>
+                </tr>
+                <tr>
+                    <td>ZOO104</td>
+                    <td>Experimental Zoology II</td>
+                    <td>1</td>
+                    <td>13</td>
+                    <td>45</td>
+                    <td>58</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">Total Number of Units Registered</td>
+                    <td>23</td> <!-- Aligned under Course Unit -->
+                    <td colspan="2"></td> <!-- Empty columns to maintain structure -->
+                </tr>
+            </table>
+        </main>
+    </div>
+    <script>
+        function delayHomeRedirect(event) {
+            event.preventDefault(); // Prevent immediate navigation
+            setTimeout(function () {
+                window.location.href = "index.html";
+            }, 1000); // 1-second delay
+        }
+        function delayCourseRedirect(event) {
+        event.preventDefault(); // Stop immediate navigation
+        setTimeout(function () {
+            window.location.href = "courses.html"; // Redirect after 1 second
+        }, 2000);
+    }   
+    function delayCourseRedirect(event) {
+        event.preventDefault(); // Stop immediate navigation
+        setTimeout(function () {
+            window.location.href = "semester.html"; // Redirect after 1 second
+        }, 2000);
+    }   
+    </script>
+    
+</body>
+</html>

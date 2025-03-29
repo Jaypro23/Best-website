@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAU Student Information Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #d0d6e2;
+            padding: 10px;
+            text-align: center;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .logo {
+            height: 80px;
+        }
+        h1 {
+            color: #000080;
+            font-size: 24px;
+            margin: 5px 0;
+        }
+        nav {
+            background-color: #000080;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 10px;
+    display: inline-block;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background-color: yellow;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+    color: yellow;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+        nav ul li:nth-child(n+2):nth-child(-n+5) a {
+            color: lightyellow;
+            font-size: 13px;
+        }
+        nav ul li a:hover {
+            color: #4a4a4a;
+        }
+        .user-info {
+            text-align: right;
+            padding: 5px 15px;
+            color: orange;
+        }
+        main {
+            display: flex;
+            padding: 20px;
+        }
+        .profile-menu {
+            width: 25%;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+        .profile-menu h2 {
+            color: #f2b705;
+        }
+        .profile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .profile-menu ul li {
+    padding: 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent; /* Default transparent border */
+}
+
+.profile-menu ul li:hover {
+    background-color: #d9d9d9;
+    border: 2px solid #333334; /* Blue border on hover */
+    border-radius: 5px; /* Optional: rounded corners */
+    padding: 8px; /* Ensures consistent padding */
+}
+        .profile-menu ul li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            width: 100%;
+        }
+        .disabled {
+            color: gray;
+        }
+        .student-details {
+    width: 75%;
+    background-color: #d3d3d3;
+    padding: 20px;
+    position: relative; /* Ensures absolute positioning inside */
+}
+        
+        .highlight, .student-details p {
+            color: #004080;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .study-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .study-btn:hover {
+            background-color: #004080;
+        }
+        .student-photo {
+    width: 150px;
+    height: 180px;
+    border: 2px solid black;
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 50px; /* Adjust if needed */
+}
+        
+        .course-list {
+    color: #004080;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 10px; /* Reduced space here */
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    row-gap: 15px; /* Reduced row gap */
+    column-gap: 26px;
+    width: fit-content;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="image.png/oau.png" alt="OAU Logo" class="logo">
+            <h1>Obafemi Awolowo University<br>Student Information Portal</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="goHome(event)">Home</a></li>
+                <li><a href="#">Students</a></li>
+                <li><a href="#">Staff</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="user-info">Welcome, Jayeoba Opeyemi Pelumi | <a href="#">Sign Out</a></div>
+    </header>
+    <main>
+        <aside class="profile-menu">
+            <h2>Profile Menu</h2>
+            <ul>
+                <li>Profile Page</li>
+                <li>Health Centre Registration</li>
+                <li>Teaching Assessment</li>
+                <li>Payment Activities</li>
+                <li class="disabled">Complete Certificate Form</li>
+                <li class="disabled">Online Screening</li>
+                <li>Check Admission Status</li>
+                <li>Activate Late Reg. Payment</li>
+                <li>Update Biodata Information</li>
+                <li>Register Courses</li>
+                <li class="disabled">Complete Health Centre Form</li>
+                <li>View Semester Raw Score</li>
+                <li><a href="#" onclick="delayRedirect(event)">Check Results</a></li>
+                <li class="disabled">Check Messages</li>
+                <li>Bedspace Request</li>
+                <li>Reports</li>
+            </ul>
+        </aside>
+        <section class="student-details">
+            <h2>Student Details</h2>
+            <p><strong>Registration Number:</strong> <span class="highlight">ZOO/2022/042</span></p>
+            <p><strong>Name:</strong> Jayeoba Opeyemi Pelumi</p>
+            <p><strong>Current Part:</strong> 2</p>
+            <p><strong>Degree Programme:</strong> B.Sc. Zoology</p>
+            <p><strong>Department:</strong> Zoology</p>
+            <p><strong>Faculty:</strong> Science</p>
+            <p><strong>BedSpace Location:</strong> NIL</p>
+            <p><strong>Email Address:</strong> jayeobaopeyemi@student.oauife.edu.ng</p>
+            <p><strong>Email Password:</strong> (Your matric/registration number, the alphabets in CAPSLOCK) : ZOO/2022/042</p>
+            <img src="image.png/passport.jpg" alt="Student Photo" class="student-photo">
+            <button class="study-btn">Study Padi</button>
+            
+            <!-- Courses List -->
+            <div class="course-list">
+                <span>BOT101</span>
+                <span>BOT103</span>
+                <span>CHM101</span>
+                <span>CHM103</span>
+                <span>LIB001</span>
+                <span>PHY105</span>
+                <span>PHY107</span>
+                <span>SER001</span>
+                <span>SSC101</span>
+                <span>ZOO101</span>
+                <span>ZOO103</span>
+
+            </div>
+        </section>
+    </main>
+    <script>
+        function delayRedirect(event) {
+            event.preventDefault();
+            setTimeout(function () {
+                window.location.href = "result.html";
+            }, 3000);
+        }
+        function goHome(event) {
+    event.preventDefault(); // Prevents instant navigation
+    setTimeout(function () {
+        window.location.href = "index.html"; // Redirects after 1 second
+    }, 1000); // 1000ms = 1 second
+}
+
+    </script>
+</body>
+</html>
